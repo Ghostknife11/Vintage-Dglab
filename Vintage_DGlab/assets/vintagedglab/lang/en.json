@@ -1,0 +1,14 @@
+{
+  "item-vintagedglab-gimbal_sensor": "Gimbal Sensor",
+  "itemdesc-vintagedglab-gimbal_sensor": "Monitors nearby player health and transmits to DG-Lab Coyote device via WebSocket. Damage increases output, healing decreases it. Right-click to view sensor GUI.",
+  "block-vintagedglab-gimbal_sensor": "Gimbal Sensor",
+
+  "screen.vintagedglab.sensor": "Coyote Health Link",
+
+  "tab-vintagedglab-vintage": "Coyote",
+
+  "vintage:command-connect": "Start WebSocket server for DG-Lab connection",
+  "vintage:command-disconnect": "Stop WebSocket server and disconnect",
+  "vintage:command-status": "Show current connection status",
+  "vintage:command-port": "Set WebSocket port"
+}

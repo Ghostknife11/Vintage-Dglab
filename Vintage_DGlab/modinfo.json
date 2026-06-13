@@ -1,0 +1,16 @@
+{
+  "type": "code",
+  "modid": "vintagedglab",
+  "name": "Vintage-DGLab",
+  "authors": ["Ghostknife"],
+  "description": "Client-side DG-Lab Coyote device link. Monitors your health and drives output via local WebSocket. Use .dglab-connect to start.",
+  "version": "1.2.0",
+  "side": "client",
+  "requiredOnClient": true,
+  "requiredOnServer": false,
+  "tags": ["technology", "client-side", "immersion", "hardware"],
+  "dependencies": {
+    "game": "1.22.3"
+  },
+  "website": "https://mods.vintagestory.at/vintagedglab"
+}

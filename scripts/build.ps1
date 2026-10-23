@@ -21,7 +21,12 @@ try {
     $info=Get-Content (Join-Path $repoRoot 'Vintage_DGlab\modinfo.json') -Raw | ConvertFrom-Json
     [xml]$projectXml=Get-Content $project -Raw
     $gameVersion=[string]$projectXml.Project.PropertyGroup.SupportedGameVersion
+    $gameVersionMax=[string]$projectXml.Project.PropertyGroup.SupportedGameVersionMax
+    if(-not $gameVersionMax){$gameVersionMax=$gameVersion}
+    if([version]$gameVersionMax -lt [version]$gameVersion){throw 'Supported game range is reversed'}
+    $gameRange=if($gameVersionMax -eq $gameVersion){$gameVersion}else{"$gameVersion-$gameVersionMax"}
     if($info.dependencies.game -ne $gameVersion){throw 'Project and modinfo target different game versions'}
+    if($info.version -ne [string]$projectXml.Project.PropertyGroup.Version){throw 'Assembly and modinfo versions differ'}
     New-Item -ItemType Directory -Path $Destination -Force | Out-Null
     $stage=Join-Path $Destination ('stage-'+[guid]::NewGuid().ToString('N'))
     $compiled=Join-Path $stage 'compiled'
@@ -39,8 +44,8 @@ try {
     foreach($file in @('LICENSE','README.md','THIRD_PARTY_NOTICES.md','VALIDATION.md')){Copy-Item -LiteralPath (Join-Path $repoRoot $file) -Destination $package}
     Copy-Item -LiteralPath (Join-Path $repoRoot 'LICENSES') -Destination $package -Recurse
     $sourceUrl="https://github.com/Ghostknife11/Vintage-Dglab/tree/$commit"
-    @("Vintage-DGLab $($info.version), game $gameVersion", "Source commit: $commit", "Source: $sourceUrl",'The matching -source.zip is distributed beside this mod ZIP.','Build instructions, dependency versions and licenses are included in the source archive.') | Set-Content -LiteralPath (Join-Path $package 'SOURCE.txt') -Encoding utf8
-    $name="Vintage-DGLab-$($info.version)-vs$gameVersion"
+    @("Vintage-DGLab $($info.version), supported game range $gameRange", "Source commit: $commit", "Source: $sourceUrl", "Built against real game API: $gameVersion",'See VALIDATION.md for tested versions and compatibility assumptions.','The matching -source.zip is distributed beside this mod ZIP.','Build instructions, dependency versions and licenses are included in the source archive.') | Set-Content -LiteralPath (Join-Path $package 'SOURCE.txt') -Encoding utf8
+    $name="Vintage-DGLab-$($info.version)-vs$gameRange"
     if($PackageSuffix){$name+="-$PackageSuffix"}
     $binary=Join-Path $Destination "$name.zip"
     $source=Join-Path $Destination "$name-source.zip"

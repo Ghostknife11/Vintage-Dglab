@@ -10,9 +10,10 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <OutputPath>bin\$(Configuration)\Mods\mod</OutputPath>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <GamePath Condition="'$(GamePath)' == ''">$(VINTAGE_STORY)</GamePath>
-    <SupportedGameVersion>1.22.7</SupportedGameVersion>
+    <SupportedGameVersion>1.22.3</SupportedGameVersion>
+    <SupportedGameVersionMax>1.22.7</SupportedGameVersionMax>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>

@@ -101,7 +101,7 @@ public sealed class LinkDialog : GuiDialog
         SingleComposer.AddDynamicText("",Font(),B(18,363,714,65),"targets");
     }
     void AboutPage(){
-        Text("Vintage-DGLab 1.3.0 · 客户端模组",18,164,710);
+        Text("Vintage-DGLab 1.3.1 · 客户端模组",18,164,710);
         Text("Ctrl+Alt+G / .dglab 打开；服务器无需安装。",18,204,710);
         Text("上限由手机管理；比例作用于实际通道数值。",18,244,710);
         Text("手动测试会暂停联动；测试结束归零。",18,284,710);

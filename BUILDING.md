@@ -1,6 +1,6 @@
 # 构建与打包
 
-需要 Git、.NET 10 SDK 和合法安装的目标版本 Vintage Story。游戏不随源码或模组发布包再分发。
+需要 Git、.NET 10 SDK 和合法安装的 Vintage Story 1.22.3。通用包以最低支持版本的真实 API 编译，声明支持 1.22.3～1.22.7。游戏不随源码或模组发布包再分发。
 
 ## 本地验证
 
@@ -9,7 +9,7 @@ dotnet run --project tests/Tests.csproj
 dotnet build Vintage_DGlab/CoyoteMod.csproj -c Release -p:GamePath="C:\Path\To\VintageStory"
 ```
 
-项目检查 `VintagestoryAPI.dll` 的真实程序集版本，必须与当前分支的 `SupportedGameVersion` 一致。禁止使用 API stub 或其他版本的 DLL 来生成发布包。`GamePath` 默认采用环境变量 `VINTAGE_STORY`，也可通过参数指定。
+项目检查 `VintagestoryAPI.dll` 的真实程序集版本，必须与 `SupportedGameVersion`（编译基线，当前 1.22.3）一致；`SupportedGameVersionMax` 记录当前支持范围的上端（1.22.7）。禁止使用 API stub 或较新版本的 DLL 来生成声称支持旧版的发布包。`GamePath` 默认采用环境变量 `VINTAGE_STORY`，也可通过参数指定。
 
 ## 发布包
 
@@ -21,7 +21,7 @@ dotnet build Vintage_DGlab/CoyoteMod.csproj -c Release -p:GamePath="C:\Path\To\V
 
 脚本固定还原 `packages.lock.json`，运行协议与规则测试，编译真实游戏 API，生成：
 
-- `artifacts/Vintage-DGLab-1.3.0-vs<版本>.zip`：安装用 ZIP。
+- `artifacts/Vintage-DGLab-1.3.1-vs1.22.3-1.22.7.zip`：供整个支持范围使用的同一安装包。
 - 同名 `-source.zip`：该完整 Git 提交的对应源码、构建脚本与许可文件，以及 `third_party/QRCoder/` 的固定版本完整源码。
 - 同名 `-SHA256SUMS.txt`：两份 ZIP 的 SHA-256。
 
@@ -35,7 +35,7 @@ dotnet build Vintage_DGlab/CoyoteMod.csproj -c Release -p:GamePath="C:\Path\To\V
 ./scripts/build.ps1 -GamePath "C:\Path\To\VintageStory" -PackageSuffix moddb
 ```
 
-此命令给二进制、对应源码和校验清单统一加 `-moddb` 后缀，保留原已发布附件及其校验值。此轮 1.3.0 修订只移除不受支持的清单字段，不改变运行时功能。发布时将三份新附件一同提供。
+可选的 `-PackageSuffix moddb` 给二进制、对应源码和校验清单统一加 `-moddb` 后缀，用于保留历史附件。1.3.0 曾以此方式修正清单；从 1.3.1 起，默认通用包直接兼容 Mod DB，GitHub 和官方站使用同一文件，不需要额外后缀或另一套二进制。
 
 ## 原生 GUI 实测
 

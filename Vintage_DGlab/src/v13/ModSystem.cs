@@ -31,7 +31,7 @@ public sealed class VintageDLabSystem : ModSystem
         capi.Event.LeaveWorld+=OnLeave;
         capi.Event.PauseResume+=OnPause;
         listener=capi.Event.RegisterGameTickListener(Tick,100);
-        capi.Logger.Notification("[Vintage-DGLab] v1.3.0 ready. Ctrl+Alt+G or .dglab");
+        capi.Logger.Notification("[Vintage-DGLab] v1.3.1 ready. Ctrl+Alt+G or .dglab");
     }
     void Register(string name,Action action)=>api!.ChatCommands.Create(name).WithDescription("郊狼控制台兼容命令").HandleWith(_=>{
         try{action();return TextCommandResult.Success("已执行；使用 .dglab 查看控制台");}catch(Exception e){return TextCommandResult.Error(e.Message);}

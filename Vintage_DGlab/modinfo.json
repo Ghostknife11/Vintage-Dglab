@@ -6,12 +6,12 @@
     "Ghostknife"
   ],
   "description": "游戏内郊狼控制台：血量联动、限时死亡反馈、DG-LAB 4 与局域网扫码。按 Ctrl+Alt+G 或输入 .dglab 打开。",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "side": "client",
   "requiredOnClient": true,
   "requiredOnServer": false,
   "dependencies": {
-    "game": "1.22.7"
+    "game": "1.22.3"
   },
   "website": "https://mods.vintagestory.at/vintagedglab"
 }

@@ -1,0 +1,15 @@
+.tools/
+.audit/
+artifacts/
+bin/
+obj/
+**/bin/
+**/obj/
+**/__pycache__/
+.vs/
+*.user
+*.log
+*.jsonl
+.env
+.env.*
+local.settings.json

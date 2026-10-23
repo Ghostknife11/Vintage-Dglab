@@ -10,12 +10,6 @@
   "side": "client",
   "requiredOnClient": true,
   "requiredOnServer": false,
-  "tags": [
-    "technology",
-    "client-side",
-    "immersion",
-    "hardware"
-  ],
   "dependencies": {
     "game": "1.22.3"
   },

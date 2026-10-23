@@ -1,7 +1,8 @@
 # SPDX-License-Identifier: GPL-3.0-only
 param(
     [Parameter(Mandatory=$true)][string]$GamePath,
-    [string]$Destination
+    [string]$Destination,
+    [ValidateSet('', 'moddb')][string]$PackageSuffix = ''
 )
 $ErrorActionPreference='Stop'
 $repoRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
@@ -40,6 +41,7 @@ try {
     $sourceUrl="https://github.com/Ghostknife11/Vintage-Dglab/tree/$commit"
     @("Vintage-DGLab $($info.version), game $gameVersion", "Source commit: $commit", "Source: $sourceUrl",'The matching -source.zip is distributed beside this mod ZIP.','Build instructions, dependency versions and licenses are included in the source archive.') | Set-Content -LiteralPath (Join-Path $package 'SOURCE.txt') -Encoding utf8
     $name="Vintage-DGLab-$($info.version)-vs$gameVersion"
+    if($PackageSuffix){$name+="-$PackageSuffix"}
     $binary=Join-Path $Destination "$name.zip"
     $source=Join-Path $Destination "$name-source.zip"
     Compress-Archive -Path (Join-Path $package '*') -DestinationPath $binary -Force

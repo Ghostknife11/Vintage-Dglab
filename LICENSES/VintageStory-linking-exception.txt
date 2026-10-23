@@ -1,0 +1,17 @@
+Additional permission under GNU GPL version 3 section 7
+
+Copyright (C) 2026 Ghostknife and contributors
+
+For code in this repository whose copyright holders grant this permission,
+you may link or combine the Program with Vintage Story and the libraries
+and APIs supplied as part of Vintage Story, and convey the resulting work.
+You must comply with the GNU General Public License version 3 for all
+covered parts of the work. Corresponding Source must include the source
+code for the covered parts, but need not include Vintage Story or its
+separately licensed libraries. This permission does not grant any rights
+to redistribute Vintage Story or change its license.
+
+This additional permission applies only to the original code of this mod.
+It does not extend to third-party code which does not grant this permission.
+You may extend this permission to your modifications, but are not required
+to do so. If you do not wish to do so, remove this permission from your version.

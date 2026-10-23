@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup><Compile Include="../Vintage_DGlab/src/v13/Settings.cs" Link="Settings.cs" /><Compile Include="../Vintage_DGlab/src/v13/DeviceLink.cs" Link="DeviceLink.cs" /><Compile Include="../Vintage_DGlab/src/v13/Controller.cs" Link="Controller.cs" /></ItemGroup>
+</Project>
